@@ -1,14 +1,15 @@
 ---
 import { Image } from "astro:assets";
 import fotoanillo from "~/assets/itinerario1.jpg";
-import ceremonia from "~/assets/ceremonia.png";
-import salon from "~/assets/salon.png";
+import foto2 from "~/assets/itinerario2.jpg";
+import anillo from "~/assets/ceremoniar.png";
+import salud from "~/assets/salon1.png";
 
 const widths = [450, 800, 1200];
 const sizes = "100vw";
 ---
 
-<section class="relative h-screen w-full">
+<section class="relative h-screen w-full" id="itinerario">
   <Image
     class="h-full w-full object-cover"
     src={fotoanillo}
@@ -17,19 +18,43 @@ const sizes = "100vw";
     alt="Encabezado con fondo personalizado"
     loading="eager"
   />
-    
-  <!-- Imágenes flotantes -->
-  <div class="floating-images-container">
-    <Image 
-      src={ceremonia} 
-      alt="Ceremonia" 
-      class="floating-image left-image" 
-    />
-    <Image 
-      src={salon} 
-      alt="Salón" 
-      class="floating-image right-image" 
-    />
+  
+  <!-- Contenedor para el texto centrado -->
+  <div class="text-overlay">
+    <div class="ring-image">
+      <a href="https://maps.app.goo.gl/rSXtb6m4t7YMXG9B6">
+      <Image 
+        src={anillo} 
+        alt="Anillos de boda" 
+        class="ring-icon" 
+      />
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="relative h-screen w-full" id="itinerario">
+  <Image
+    class="h-full w-full object-cover"
+    src={foto2}
+    widths={widths}
+    sizes={sizes}
+    alt="Encabezado con fondo personalizado"
+    loading="eager"
+  />
+  
+  <!-- Contenedor para el texto centrado -->
+  <div class="text-overlay">
+    <!-- Imagen de los anillos encima del título, centrada -->
+    <div class="ring-image">
+      <a href="https://maps.app.goo.gl/W7Lj3knjMsW16gvV7">
+      <Image 
+        src={salud} 
+        alt="Anillos de boda" 
+        class="ring-icon" 
+      />
+    </a>
+    </div>
   </div>
 </section>
 
@@ -39,49 +64,21 @@ const sizes = "100vw";
     height: 100vh;
   }
 
-  .floating-image {
-    transition: transform 0.3s ease;
-    width: 80%; /* Tamaño reducido en pantallas móviles */
-  }
-
-  .floating-image:hover {
-    transform: scale(1.1) translateY(-10px);
-  }
-
-  .floating-images-container {
+  /* Contenedor de texto centrado */
+  .text-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column; /* Apilar imágenes en móviles */
-    align-items: center;
-    gap: 1rem;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste perfecto al centro */
+    color: #D6CCC2; /* Color del texto */
+    text-align: center; /* Centrado del texto */
+    font-size: 3rem; /* Tamaño del texto */
+    font-weight: bold; /* Peso del texto */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para mejor legibilidad */
   }
 
-  /* Para pantallas medianas */
-  @media (min-width: 768px) {
-    .floating-images-container {
-      flex-direction: row; /* Poner imágenes en fila en pantallas más grandes */
-      gap: 2rem;
-    }
-
-    .floating-image {
-      width: 25%; /* Tamaño mayor en pantallas medianas */
-    }
+  h1 {
+    font-size: 3rem; /* Tamaño inicial del título */
   }
 
-  /* Para pantallas grandes */
-  @media (min-width: 1024px) {
-    .floating-image {
-      width: 50%;
-    }
-  }
-
-  /* Para pantallas extra grandes */
-  @media (min-width: 1280px) {
-    .floating-image {
-      width: 35%;
-    }
-  }
 </style>
