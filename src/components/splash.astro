@@ -2,7 +2,6 @@
 
 import HeroImage from "~/components/hero-image.astro";
 import HeaderImage from "~/components/header-image.astro";
-import GitHubCorner from "./github-corner.astro";
 
 const widths = [450, 800];
 const sizes = "(min-width: 640px) 42vw, 67vw";
@@ -10,7 +9,6 @@ const sizes = "(min-width: 640px) 42vw, 67vw";
 
 <section class="relative h-full bg-black">
   <HeaderImage />
-  <GitHubCorner />
   <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
     <HeroImage />
   </div>
