@@ -1,89 +1,120 @@
 ---
-import CompatibilityList from "~/components/compatibility-list.astro";
 import ContentSection from "~/components/content-section.astro";
-import type { CompatibilityItem } from "~/types";
-
-const frameworks: Array<CompatibilityItem> = [
-  {
-    title: "React",
-    icon: "frameworks/react",
-    url: "https://reactjs.org/",
-  },
-  {
-    title: "Preact",
-    icon: "frameworks/preact",
-    url: "https://preactjs.com/",
-  },
-  {
-    title: "Svelte",
-    icon: "frameworks/svelte",
-    url: "https://svelte.dev/",
-  },
-  {
-    title: "Vue",
-    icon: "frameworks/vue",
-    url: "https://vuejs.org/",
-  },
-  {
-    title: "Solid",
-    icon: "frameworks/solid",
-    url: "https://www.solidjs.com/",
-  },
-  {
-    title: "Lit",
-    icon: "frameworks/lit",
-    url: "https://lit.dev/",
-  },
-];
-
-const platforms: Array<CompatibilityItem> = [
-  {
-    title: "Netlify",
-    icon: "platforms/netlify",
-    url: "https://www.netlify.com/",
-  },
-  {
-    title: "Vercel",
-    icon: "platforms/vercel",
-    url: "https://vercel.com/",
-  },
-  {
-    title: "Cloudflare",
-    icon: "fa-brands:cloudflare",
-    url: "https://pages.cloudflare.com/",
-  },
-  {
-    title: "Render",
-    icon: "platforms/render",
-    url: "https://render.com/",
-  },
-  {
-    title: "GitHub",
-    icon: "fa-brands:github",
-    url: "https://pages.github.com/",
-  },
-  {
-    title: "GitLab",
-    icon: "fa-brands:gitlab",
-    url: "https://docs.gitlab.com/ee/user/project/pages/",
-  },
-];
+import { Image } from "astro:assets";
+import Liverpool from "~/assets/liverpool1.png";
+import Amazon from "~/assets/amazon.png";
+import Sobres from "~/assets/mesaderegalos.jpeg";
 ---
 
-<ContentSection title="Compatibility" id="compatibility">
+<ContentSection title="" id="mesaderegalos">
   <Fragment slot="lead">
-    Astro <span class="text-primary">plays nice</span>. Bring your own UI{" "}
-    <span class="text-primary">framework</span>
-    and deploy to your favorite <span class="text-primary">platform</span>.
+    Mesa de regalos
   </Fragment>
-  <CompatibilityList
-    items={frameworks}
-    title="Frameworks"
-    url="https://docs.astro.build/core-concepts/framework-components/"
-  />
-  <CompatibilityList
-    items={platforms}
-    title="Platforms"
-    url="https://docs.astro.build/guides/deploy/"
-  />
+
+  <div class="cards-container">
+    <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51519892">
+      <Image 
+        src={Liverpool} 
+        alt="Liverpool" 
+        class="card-image"
+      />
+    </a>
+  
+    <a href="https://www.amazon.com.mx/wedding/share/250125FernandayManuel">
+      <Image 
+        src={Amazon} 
+        alt="Amazon" 
+        class="card-image"
+      />
+    </a>
+  
+    <a href="https://piscospersonalizados.com/lluvia-de-sobres-lo-nuevo-en-regalos/">
+      <Image 
+        src={Sobres} 
+        alt="Sobres" 
+        class="card-image"
+      />
+    </a>
+  </div>
+  <h2 class="text-center text-2xl font-semibold text-black animate-fade-in">
+    En este día especial, queremos rodearnos de nuestras familias y amigos para celebrar el amor que nos une. Compartan con nosotros en nuestra boda
+  </h2>
 </ContentSection>
+
+<ContentSection title="" id="asistencia">
+  <Fragment slot="lead">
+    Confirmar asistencia
+  </Fragment>
+  <a href="https://wa.me/529621541366" target="_blank">
+    <button class="whatsapp-button">Chat en WhatsApp</button>
+  </a>
+</ContentSection>
+  
+  <style>
+    .cards-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  
+    .card-image {
+      width: 100%; /* Ocupa todo el ancho del contenedor */
+      height: 200px; /* Ajusta la altura deseada */
+      object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+      transition: transform 0.3s ease;
+    }
+  
+    .card-image:hover {
+      transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    }
+  
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .card-image {
+        width: 90%; /* Se ajusta al 90% del ancho disponible */
+        height: 200px; /* Se mantiene la altura en pantallas pequeñas */
+        margin-bottom: 20px; /* Espaciado entre las imágenes */
+      }
+    }
+    /* Animación de fade-in */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 10s ease-in-out;
+  }
+
+  .whatsapp-button {
+    padding: 12px 24px;
+    background-color: #D5BDAF; /* Color verde de WhatsApp */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #D6CCC2; /* Color más oscuro cuando se pasa el mouse */
+  }
+  </style>
+  
+  

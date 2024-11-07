@@ -32,7 +32,9 @@ const sizes = "100vw";
     </div>
   </div>
 </section>
-
+ <h2 class="text-center text-2xl font-semibold text-black animate-fade-in">
+  La vida es corta, pero el amor dura para siempre.
+</h2>
 <section class="relative h-screen w-full" id="itinerario">
   <Image
     class="h-full w-full object-cover"
@@ -57,7 +59,9 @@ const sizes = "100vw";
     </div>
   </div>
 </section>
-
+<h2 class="text-center text-2xl font-semibold text-black animate-fade-in">
+  El día más esperado de nuestras vidas finalmente ha llegado. Acompáñennos en nuestra boda y sean parte de nuestra historia de amor.
+</h2>
 <style>
   section {
     position: relative;
@@ -80,5 +84,19 @@ const sizes = "100vw";
   h1 {
     font-size: 3rem; /* Tamaño inicial del título */
   }
+/* Animación de fade-in */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
+  .animate-fade-in {
+    animation: fadeIn 10s ease-in-out;
+  }
 </style>
