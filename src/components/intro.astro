@@ -1,15 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
+import itinerario1 from "~/assets/itinerario1.jpg";
+import itinerario2 from "~/assets/itinerario2.jpg";
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="size-32" />
+<ContentSection title="" id="itinerario" class="bg-cover bg-center" style={`background-image: url(${itinerario2})`}>
   <Fragment slot="lead">
-    Astro is a new kind of site builder for the
-    <span class="text-primary">modern</span> web.
-    <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
+    <h2 class="text-center text-2xl font-semibold text-[#D5BDAF] animate-fade-in">
+      El mejor tipo de amor es el que despierta el alma y nos hace aspirar a más
+    </h2>
   </Fragment>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
     <a
@@ -28,3 +28,21 @@ import ContentSection from "~/components/content-section.astro";
     </a>
   </div>
 </ContentSection>
+
+<style>
+  /* Animación de fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 2s ease-in-out;
+  }
+</style>

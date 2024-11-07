@@ -16,7 +16,7 @@ const sizes = "100vw";
     alt="Encabezado con fondo personalizado"
     loading="eager"
   />
-  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
     <Image
       class="w-1/2 md:w-1/3"
       src={fotonombre}
@@ -24,12 +24,82 @@ const sizes = "100vw";
       widths={[300, 600, 900]}
       sizes="50vw"
     />
+    <!-- Contenedor de la cuenta regresiva -->
+    <div id="countdown" class="countdown-container mt-4 flex justify-around items-center px-8 py-4 rounded-full shadow-lg"></div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const countdown = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const targetDate = new Date("2025-01-25T19:00:00");
+      const now = new Date();
+      const timeDifference = targetDate - now;
+
+      if (timeDifference <= 0) {
+        countdown.innerHTML = "<span>¡El evento ha comenzado!</span>";
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `
+        <div class="time-segment"><span class="number">${days}</span><span class="label"> DIAS</span></div>
+        <div class="time-segment"><span class="number">${hours}</span><span class="label"> HORAS</span></div>
+        <div class="time-segment"><span class="number">${minutes}</span><span class="label"> MIN</span></div>
+        <div class="time-segment"><span class="number">${seconds}</span><span class="label"> SEC</span></div>
+      `;
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Llamada inicial para establecer la cuenta regresiva inmediatamente
+  });
+</script>
+
 
 <style>
   section {
     position: relative;
     height: 100vh;
   }
+  .countdown-container {
+    background-color: #000; /* Fondo negro */
+    color: #F5EBE0; /* Color dorado */
+    font-family: Arial, sans-serif;
+  }
+
+  .time-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 8px;
+  }
+
+  .number {
+    font-size: 2.5rem; /* Tamaño grande para el número */
+    font-weight: bold;
+  }
+
+  .label {
+    font-size: 0.875rem; /* Tamaño pequeño para la etiqueta */
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .countdown-container {
+    background-color: #000; /* Fondo negro */
+    color: #D5BDAF; /* Color dorado */
+    padding: 1rem 2rem;
+    border-radius: 9999px; /* Borde redondeado completo */
+    display: flex;
+    gap: 1rem;
+  }
 </style>
+
+
