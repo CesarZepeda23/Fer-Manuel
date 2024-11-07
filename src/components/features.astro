@@ -1,66 +1,87 @@
 ---
-import { Icon } from "astro-icon/components";
-import ContentSection from "~/components/content-section.astro";
-import type { FeatureItem } from "~/types";
+import { Image } from "astro:assets";
+import fotoanillo from "~/assets/itinerario1.jpg";
+import ceremonia from "~/assets/ceremonia.png";
+import salon from "~/assets/salon.png";
 
-const features: Array<FeatureItem> = [
-  {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "mdi:handshake",
-  },
-  {
-    title: "100% Static HTML, No JS",
-    description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "mdi:feather",
-  },
-  {
-    title: "On-Demand Components",
-    description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page. If the user never sees it, they never load it.",
-    icon: "mdi:directions-fork",
-  },
-  {
-    title: "Broad Integration",
-    description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any of your favorite npm packages.",
-    icon: "mdi:graph",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication.",
-    icon: "mdi:search-web",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "mdi:account-group",
-  },
-];
+const widths = [450, 800, 1200];
+const sizes = "100vw";
 ---
 
-<ContentSection title="Features" id="features">
-  <Fragment slot="lead">
-    Astro comes <span class="text-primary">batteries included</span>. It takes
-    the best parts of
-    <span class="text-primary">state-of-the-art</span>
-    tools and adds its own <span class="text-primary">innovations</span>.
-  </Fragment>
-  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    {
-      features.map(({ title, description, icon }) => (
-        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
-          <div class="size-16 rounded-full border-2 border-current p-3">
-            <Icon name={icon} class="size-full" />
-          </div>
-          <p class="text-center font-extrabold text-xl">{title}</p>
-          <p class="text-center text-offset text-sm">{description}</p>
-        </li>
-      ))
+<section class="relative h-screen w-full">
+  <Image
+    class="h-full w-full object-cover"
+    src={fotoanillo}
+    widths={widths}
+    sizes={sizes}
+    alt="Encabezado con fondo personalizado"
+    loading="eager"
+  />
+    
+  <!-- Imágenes flotantes -->
+  <div class="floating-images-container">
+    <Image 
+      src={ceremonia} 
+      alt="Ceremonia" 
+      class="floating-image left-image" 
+    />
+    <Image 
+      src={salon} 
+      alt="Salón" 
+      class="floating-image right-image" 
+    />
+  </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    height: 100vh;
+  }
+
+  .floating-image {
+    transition: transform 0.3s ease;
+    width: 80%; /* Tamaño reducido en pantallas móviles */
+  }
+
+  .floating-image:hover {
+    transform: scale(1.1) translateY(-10px);
+  }
+
+  .floating-images-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column; /* Apilar imágenes en móviles */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Para pantallas medianas */
+  @media (min-width: 768px) {
+    .floating-images-container {
+      flex-direction: row; /* Poner imágenes en fila en pantallas más grandes */
+      gap: 2rem;
     }
-  </ul>
-</ContentSection>
+
+    .floating-image {
+      width: 25%; /* Tamaño mayor en pantallas medianas */
+    }
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 1024px) {
+    .floating-image {
+      width: 50%;
+    }
+  }
+
+  /* Para pantallas extra grandes */
+  @media (min-width: 1280px) {
+    .floating-image {
+      width: 35%;
+    }
+  }
+</style>

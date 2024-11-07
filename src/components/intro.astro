@@ -5,27 +5,14 @@ import itinerario1 from "~/assets/itinerario1.jpg";
 import itinerario2 from "~/assets/itinerario2.jpg";
 ---
 
-<ContentSection title="" id="itinerario" class="bg-cover bg-center" style={`background-image: url(${itinerario2})`}>
+<ContentSection title="" id="itinerario" class="bg-cover bg-center">
   <Fragment slot="lead">
-    <h2 class="text-center text-2xl font-semibold text-[#D5BDAF] animate-fade-in">
+    <h2 class="text-center text-2xl font-semibold text-black animate-fade-in">
       El mejor tipo de amor es el que despierta el alma y nos hace aspirar a más
     </h2>
   </Fragment>
   <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-    <a
-      href="https://docs.astro.build/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:telescope" class="size-8" />
-      <span>Read the docs</span>
-    </a>
-    <a
-      href="https://astro.new/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:rocket" class="size-8" />
-      <span>Try it out</span>
-    </a>
+
   </div>
 </ContentSection>
 
@@ -43,6 +30,6 @@ import itinerario2 from "~/assets/itinerario2.jpg";
   }
 
   .animate-fade-in {
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 10s ease-in-out;
   }
 </style>
